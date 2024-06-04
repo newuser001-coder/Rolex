@@ -1,0 +1,3 @@
+worker: chmod +x bgmi
+worker: python m.py
+
