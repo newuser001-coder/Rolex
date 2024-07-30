@@ -23,4 +23,4 @@ jobs:
         run: |
           chmod +x bgmi 
           pip install telebot 
-          python serverr.py
+          python m.py
